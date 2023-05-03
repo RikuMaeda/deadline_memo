@@ -8,11 +8,13 @@ AppBar appBar(){
     ),
     centerTitle: true,
     backgroundColor: const Color(0xFF67B5B7),
+    );
+}
+
+/*
     leading: IconButton(
       icon: const Icon(Icons.menu),
       onPressed: () {
               
       },
-    ),
-  );
-}
+ */

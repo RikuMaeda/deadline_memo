@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:deadline_memo/common/appBar.dart';
 import 'textField_page.dart';
+import 'package:deadline_memo/common/drawer.dart';
 
 class newSeriesSetting_home extends StatefulWidget {
   const newSeriesSetting_home({super.key});
@@ -10,10 +11,13 @@ class newSeriesSetting_home extends StatefulWidget {
 }
 
 class _newSeriesSetting_homeState extends State<newSeriesSetting_home> {
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
      appBar: appBar(),
+     drawer: drawer(),
      body: Center(
         child: Expanded(
           child: Column(
@@ -22,6 +26,18 @@ class _newSeriesSetting_homeState extends State<newSeriesSetting_home> {
               Text('シリーズ名',
               style: TextStyle(fontSize: 25,
               fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    hintText: '作品名を入力してください'
+                  ),                
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -41,9 +57,10 @@ class _newSeriesSetting_homeState extends State<newSeriesSetting_home> {
                 shape: const StadiumBorder(),
                 ),
                 onPressed: () {
+                  String text = _controller.text;
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EditField())
+                    MaterialPageRoute(builder: (context) => EditField(title_text: text))
                   );                  
                 },
                 ),

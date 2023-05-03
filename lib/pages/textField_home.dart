@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:deadline_memo/common/appBar.dart';
+import 'package:deadline_memo/common/drawer.dart';
 
 class Editor_home extends StatefulWidget {
+  final String text;
   final String current;
   final Function(String) onChanged;
 
-  Editor_home(this.current, this.onChanged);
+  Editor_home(this.text, this.current, this.onChanged);
 
   @override
   _Editor_homeState createState() => _Editor_homeState();
@@ -33,13 +35,30 @@ class _Editor_homeState extends State<Editor_home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
-      body: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: TextField(
-          controller: _controller,
-          maxLines: 99,
-          style: TextStyle(color: Colors.black),
-        ),
+      drawer: drawer(),
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              widget.text,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                controller: _controller,
+                maxLines: 200,
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

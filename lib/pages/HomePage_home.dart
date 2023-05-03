@@ -3,6 +3,7 @@ import 'myapp_page.dart';
 import '../func/showAlertDialog.dart';
 import '../common/appBar.dart';
 import '../common/floatingActionButton.dart';
+import 'package:deadline_memo/common/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
+      drawer: drawer(),
       body: Center(
         child: Expanded(
           child: Column(
